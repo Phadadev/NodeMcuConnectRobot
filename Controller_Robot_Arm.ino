@@ -43,18 +43,18 @@ void loop()
     Serial.println("connection failed");  // Print connection fail messag
     return;
   }
-  //https://dweet.io/get/latest/dweet/for/masterUNG
-  client.print(String("GET /get/latest/dweet/for/masterUNG HTTP/1.1\r\n") +
+  //https://dweet.io/get/latest/dweet/for/Rcsa //chnge Rcsa for you key
+  client.print(String("GET /get/latest/dweet/for/Rcsa HTTP/1.1\r\n") +
                "Host: " + host + "\r\n" +
                "Connection: keep-alive\r\n" +
-               "Cache-Control: max-age=0\r\n\r\n");
+               "Cache-Control: max-age=0\r\n\r\n");// chnge Rcsa to your thing
   delay(1000);
   while (client.available()) 
   {
     String line = client.readStringUntil('\r');
     Serial.println(line);
 
-    String test = line.substring(137, 140);
+    String test = line.substring(132, 135);
     Serial.println(test);
 
     analogValue = test.toInt(); // Change String to int
